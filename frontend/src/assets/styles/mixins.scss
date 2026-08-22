@@ -1,0 +1,81 @@
+@use 'sass:color';
+@use 'tokens' as *;
+
+@mixin button-variant($bg, $fg, $bg-hover: null) {
+  background: $bg;
+  color: $fg;
+  border: 1px solid transparent;
+  transition:
+    background-color $transition-base,
+    transform $transition-fast,
+    box-shadow $transition-base;
+
+  &:hover:not(:disabled) {
+    @if $bg-hover {
+      background: $bg-hover;
+    } @else {
+      background: color.adjust($bg, $lightness: -6%);
+    }
+    box-shadow: $shadow-sm;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px) scale(0.99);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent-400;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+@mixin card-elevation {
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  transition:
+    box-shadow $transition-base,
+    transform $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+  }
+}
+
+@mixin fade-slide-transition($distance: 12px) {
+  &-enter-active,
+  &-leave-active {
+    transition:
+      opacity $transition-base,
+      transform $transition-base;
+  }
+
+  &-enter-from {
+    opacity: 0;
+    transform: translateY($distance);
+  }
+
+  &-leave-to {
+    opacity: 0;
+    transform: translateY(-$distance);
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

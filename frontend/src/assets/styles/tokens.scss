@@ -1,0 +1,100 @@
+// Design tokens — green (primary) + warm (accent) palette.
+
+// Green — primary brand scale
+$color-green-50: #f2f8ee;
+$color-green-100: #e1efd7;
+$color-green-200: #c3e0b1;
+$color-green-300: #9dcb83;
+$color-green-400: #78b35c;
+$color-green-500: #57993e;
+$color-green-600: #427c2e;
+$color-green-700: #356225;
+$color-green-800: #2b4e1f;
+$color-green-900: #23401c;
+
+// Warm — accent scale (amber/terracotta)
+$color-accent-50: #fdf3e7;
+$color-accent-100: #fbe3c4;
+$color-accent-200: #f6c98c;
+$color-accent-300: #f0aa57;
+$color-accent-400: #e78b34;
+$color-accent-500: #d96f1f;
+$color-accent-600: #b85618;
+$color-accent-700: #934318;
+$color-accent-800: #73361a;
+$color-accent-900: #5e2d18;
+
+// Neutrals — warm-tinted grays
+$color-neutral-0: #ffffff;
+$color-neutral-50: #faf8f5;
+$color-neutral-100: #f2ede6;
+$color-neutral-200: #e5ddd2;
+$color-neutral-300: #d1c6b6;
+$color-neutral-400: #a99d8c;
+$color-neutral-500: #7d7264;
+$color-neutral-600: #5b5245;
+$color-neutral-700: #443d33;
+$color-neutral-800: #2e2922;
+$color-neutral-900: #1c1912;
+
+// Semantic
+$color-success: $color-green-500;
+$color-danger: #c94d3c;
+$color-warning: $color-accent-400;
+$color-info: #3d7a9e;
+
+$color-bg: $color-neutral-50;
+$color-surface: $color-neutral-0;
+$color-text: $color-neutral-800;
+$color-text-muted: $color-neutral-500;
+$color-border: $color-neutral-200;
+
+// Spacing scale
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.5rem;
+$space-6: 2rem;
+$space-7: 3rem;
+$space-8: 4rem;
+
+// Typography
+$font-family-base: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+$font-family-heading: 'Manrope', $font-family-base;
+
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-md: 1.125rem;
+$font-size-lg: 1.375rem;
+$font-size-xl: 1.75rem;
+$font-size-2xl: 2.25rem;
+$font-size-3xl: 3rem;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Radius
+$radius-sm: 0.375rem;
+$radius-md: 0.75rem;
+$radius-lg: 1.25rem;
+$radius-full: 999px;
+
+// Shadow
+$shadow-sm: 0 1px 2px rgba(35, 64, 28, 0.06);
+$shadow-md: 0 4px 16px rgba(35, 64, 28, 0.1);
+$shadow-lg: 0 12px 32px rgba(35, 64, 28, 0.16);
+
+// Transition
+$transition-fast: 120ms ease;
+$transition-base: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+// Layout
+$container-max: 1180px;
+$z-header: 100;
+$z-modal: 1000;
+$z-toast: 1100;
