@@ -26,6 +26,11 @@ class User(Base):
         Enum(UserRole, name="user_role"), default=UserRole.student, nullable=False
     )
     is_active: Mapped[bool] = mapped_column(default=True, nullable=False)
+    # When the user ticked the personal-data consent checkbox at registration.
+    # NULL for accounts created before the consent flow existed (e.g. seeded ones).
+    personal_data_consent_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()

@@ -47,6 +47,12 @@ def _clear_refresh_cookie(response: Response) -> None:
 async def register(
     request: Request, payload: RegisterRequest, response: Response, db: AsyncSession = Depends(get_db)
 ):
+    if not payload.personal_data_consent:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="Для регистрации необходимо согласие на обработку персональных данных",
+        )
+
     existing = await user_crud.get_by_email(db, payload.email)
     if existing is not None:
         raise HTTPException(
@@ -54,7 +60,11 @@ async def register(
         )
 
     user = await user_crud.create_user(
-        db, email=payload.email, password=payload.password, full_name=payload.full_name
+        db,
+        email=payload.email,
+        password=payload.password,
+        full_name=payload.full_name,
+        personal_data_consent=payload.personal_data_consent,
     )
 
     access_token = create_access_token(subject=str(user.id), role=user.role.value)

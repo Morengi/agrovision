@@ -1,5 +1,7 @@
 import uuid
 
+from datetime import datetime, timezone
+
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -17,13 +19,20 @@ async def get_by_id(db: AsyncSession, user_id: uuid.UUID) -> User | None:
 
 
 async def create_user(
-    db: AsyncSession, *, email: str, password: str, full_name: str, role: UserRole = UserRole.student
+    db: AsyncSession,
+    *,
+    email: str,
+    password: str,
+    full_name: str,
+    role: UserRole = UserRole.student,
+    personal_data_consent: bool = False,
 ) -> User:
     user = User(
         email=email,
         hashed_password=hash_password(password),
         full_name=full_name,
         role=role,
+        personal_data_consent_at=datetime.now(timezone.utc) if personal_data_consent else None,
     )
     db.add(user)
     await db.commit()

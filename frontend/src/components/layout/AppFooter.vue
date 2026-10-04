@@ -15,6 +15,7 @@ import IconSvg from '@/components/common/IconSvg.vue'
       </p>
       <nav class="app-footer__links">
         <RouterLink to="/privacy-policy">Политика конфиденциальности</RouterLink>
+        <RouterLink to="/personal-data-consent">Согласие на обработку данных</RouterLink>
       </nav>
       <p class="app-footer__copy">&copy; {{ new Date().getFullYear() }} АгроВзгляд</p>
     </div>
@@ -52,6 +53,12 @@ import IconSvg from '@/components/common/IconSvg.vue'
     color: $color-green-200;
     font-size: $font-size-sm;
     flex: 1 1 260px;
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2 $space-5;
   }
 
   &__links a {

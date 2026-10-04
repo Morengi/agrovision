@@ -49,6 +49,11 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/PrivacyPolicyView.vue'),
   },
   {
+    path: '/personal-data-consent',
+    name: 'personal-data-consent',
+    component: () => import('@/views/PersonalDataConsentView.vue'),
+  },
+  {
     path: '/admin/courses',
     name: 'admin-courses',
     component: () => import('@/views/admin/CourseListAdminView.vue'),

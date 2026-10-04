@@ -13,6 +13,7 @@ const router = useRouter()
 const fullName = ref('')
 const email = ref('')
 const password = ref('')
+const consent = ref(false)
 const loading = ref(false)
 const errorMessage = ref('')
 
@@ -20,7 +21,7 @@ async function onSubmit() {
   loading.value = true
   errorMessage.value = ''
   try {
-    await auth.register(email.value, password.value, fullName.value)
+    await auth.register(email.value, password.value, fullName.value, consent.value)
     router.push('/dashboard')
   } catch (error) {
     errorMessage.value = getErrorMessage(error, 'Не удалось зарегистрироваться.')
@@ -49,6 +50,16 @@ async function onSubmit() {
           required
         />
         <p class="auth-page__hint">Не менее 8 символов.</p>
+
+        <label class="auth-page__consent">
+          <input v-model="consent" type="checkbox" required />
+          <span>
+            Мне исполнилось 14 лет, я ознакомился(ась) с
+            <RouterLink to="/privacy-policy" target="_blank">Политикой конфиденциальности</RouterLink>
+            и даю
+            <RouterLink to="/personal-data-consent" target="_blank">согласие на обработку персональных данных</RouterLink>.
+          </span>
+        </label>
 
         <p v-if="errorMessage" class="auth-page__error">{{ errorMessage }}</p>
 
@@ -95,6 +106,24 @@ async function onSubmit() {
     font-size: $font-size-xs;
     color: $color-text-muted;
     text-align: left;
+  }
+
+  &__consent {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-3;
+    text-align: left;
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+    line-height: 1.4;
+
+    input {
+      flex: none;
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: $color-green-600;
+    }
   }
 
   &__error {

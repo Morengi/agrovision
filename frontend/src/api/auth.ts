@@ -10,6 +10,7 @@ export interface RegisterPayload {
   email: string
   password: string
   full_name: string
+  personal_data_consent: boolean
 }
 
 export interface AuthResponse {
